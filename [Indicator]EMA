@@ -1,0 +1,10 @@
+//@version=4
+study(title="EMA均線",shorttitle="EMA",overlay=true)
+
+L1 = ema(close,10)
+L2 = ema(close,60)
+L3 = ema(close,100)
+
+plot(L1,color=color.rgb(75, 33, 243),title="SMA10")
+plot(L2,color=#e21616,title="SMA60")
+plot(L3,color=#48f321,title="SMA100")
