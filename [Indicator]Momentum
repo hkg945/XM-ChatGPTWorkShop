@@ -1,0 +1,14 @@
+//@version=4
+study(title="Momentum Indicator", shorttitle="Momentum", overlay=false)
+
+// 定義參數
+length = input(14, minval=1, title="Length")
+
+// 計算 Momentum
+momentum = close - close[length]
+
+// 繪製 Momentum 指標
+plot(momentum, color=color.blue, title="Momentum", linewidth=2)
+
+// 畫水平線表示零軸
+hline(0, "Zero Line", color=color.gray)
