@@ -1,0 +1,19 @@
+//@version=4
+study("Williams %R", shorttitle="%R", overlay=false)
+
+// 計算周期
+length = input(14, title="Length")
+
+// 計算最高價與最低價
+highestHigh = highest(high, length)
+lowestLow = lowest(low, length)
+
+// 計算Williams %R
+percentR = (highestHigh - close) / (highestHigh - lowestLow) * -100
+
+// 繪製Williams %R
+plot(percentR, title="Williams %R", color=color.red)
+
+// 繪製超買和超賣水平線
+hline(-20, "Overbought", color=color.green)
+hline(-80, "Oversold", color=color.blue)
