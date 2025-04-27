@@ -1,0 +1,21 @@
+//@version=4
+strategy(title="MA均線",shorttitle="MA",overlay=true)
+
+L1 = sma(close,10)
+L2 = sma(close,60)
+
+plot(L1,color=color.blue,title="SMA10")
+plot(L2,color=color.red,title="SMA60")
+
+L3 = rsi(close,14)
+
+// 定義買入和賣出信號
+buySignal = L1 > L2 and L3<30
+sellSignal = L1 < L2 and L3>70
+
+// 策略買入和賣出
+strategy.entry("Buy", strategy.long, when=buySignal)
+strategy.close("Buy", when=sellSignal)
+
+strategy.entry("Sell", strategy.short, when=sellSignal)
+strategy.close("sell", when=buySignal)
