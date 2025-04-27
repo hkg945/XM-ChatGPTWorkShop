@@ -1,0 +1,10 @@
+//@version=4
+study(title="RSI", shorttitle="RSI", overlay=false)
+
+// 計算RSI
+rsi = rsi(close,14)
+
+// 畫出RSI
+plot(rsi, title="RSI", color=color.blue)
+hline(70, "Overbought", color=color.red)
+hline(30, "Oversold", color=color.green)
