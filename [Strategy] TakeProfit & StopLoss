@@ -1,0 +1,17 @@
+// 計算停利和停損價格
+longTakeProfitPrice = strategy.position_avg_price * 1.01
+longStopLossPrice = strategy.position_avg_price * 0.99
+shortTakeProfitPrice = strategy.position_avg_price * 0.99
+shortStopLossPrice = strategy.position_avg_price * 1.01
+
+// 策略買入和賣出
+strategy.entry("Buy", strategy.long, when=buySignal)
+strategy.entry("Sell", strategy.short, when=sellSignal)
+
+// 設定多頭倉位的停利和停損
+if (strategy.position_size > 0)
+    strategy.exit("Take Profit/Stop Loss", "Buy", limit=longTakeProfitPrice, stop=longStopLossPrice)
+
+// 設定空頭倉位的停利和停損
+if (strategy.position_size < 0)
+    strategy.exit("Take Profit/Stop Loss", "Sell", limit=shortTakeProfitPrice, stop=shortStopLossPrice)
