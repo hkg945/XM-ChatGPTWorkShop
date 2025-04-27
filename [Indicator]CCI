@@ -1,0 +1,20 @@
+//@version=4
+study("CCI Indicator", shorttitle="CCI", overlay=false)
+
+// 定義參數
+length = input(20, title="CCI Length")
+src = input(close, title="Source")
+constant = 0.015
+
+// 計算CCI
+mean = sma(src, length)
+dev = sum(abs(src - mean), length) / length
+cci = (src - mean) / (constant * dev)
+
+// 畫出CCI指標
+plot(cci, color=color.blue, title="CCI")
+
+// 畫出水平線
+hline(100, "Upper Line", color=color.red)
+hline(-100, "Lower Line", color=color.green)
+hline(0, "Middle Line", color=color.gray)
