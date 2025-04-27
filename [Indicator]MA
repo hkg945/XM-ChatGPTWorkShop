@@ -1,0 +1,10 @@
+//@version=4
+study(title="MA均線",shorttitle="MA",overlay=true)
+
+L1 = sma(close,10)
+L2 = sma(close,60)
+L3 = sma(close,100)
+
+plot(L1,color=color.rgb(75, 33, 243),title="SMA10")
+plot(L2,color=#e21616,title="SMA60")
+plot(L3,color=#48f321,title="SMA100")
