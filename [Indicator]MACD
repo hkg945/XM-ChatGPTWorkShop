@@ -1,0 +1,13 @@
+//@version=4
+study(title="MACD Indicator", shorttitle="MACD", overlay=false)
+
+fastMA = ema(close,12)
+slowMA = ema(close,26)
+macd = fastMA - slowMA
+
+signal = sma(macd,9)
+histogram = macd - signal
+
+plot(macd,color=color.blue,title="MACD Line")
+plot(signal,color=color.orange,title = "Signal Line")
+plot(histogram,color=color.red,style=plot.style_histogram,title="histogram")
