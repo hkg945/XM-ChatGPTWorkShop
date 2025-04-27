@@ -1,0 +1,12 @@
+//@version=4
+study(title="KD", shorttitle="KD", overlay=false)
+
+ll = lowest(low, 9)
+hh = highest(high, 9)
+rsv = (close - ll) / (hh - ll) * 100
+
+K = sma(rsv, 3)
+D = sma(K, 3)
+
+plot(K, color=color.blue, title="K Line")
+plot(D, color=color.red, title="D Line")
