@@ -1,0 +1,22 @@
+//@version=4
+strategy(title="Bollinger Bands", shorttitle="BB", overlay=true)
+
+basis = sma(close,20)
+dev = 2* stdev(close,20)
+upper = basis + dev
+lower = basis - dev
+
+plot(basis,color=color.blue,title="Basis")
+plot(upper,color=color.red,title="Upper Band")
+plot(lower,color=color.orange,title="Lower Band")
+
+// 定義買入和賣出信號
+buySignal = close>basis and close>upper
+sellSignal = close<basis and close<lower
+
+// 策略買入和賣出
+strategy.entry("Buy", strategy.long, when=buySignal)
+strategy.close("Buy", when=sellSignal)
+
+strategy.entry("Sell", strategy.short, when=sellSignal)
+strategy.close("sell", when=buySignal)
