@@ -1,0 +1,13 @@
+//@version=4
+study("Parabolic SAR", shorttitle="SAR", overlay=true)
+
+// 定義變數
+start = input(0.02, title="Start", type=input.float)
+increment = input(0.02, title="Increment", type=input.float)
+maximum = input(0.2, title="Maximum", type=input.float)
+
+// 計算 SAR
+sar = sar(start, increment, maximum)
+
+// 畫出 SAR
+plot(sar, style=plot.style_cross, color=color.red, linewidth=2, title="SAR")
