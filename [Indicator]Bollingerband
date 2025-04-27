@@ -1,0 +1,11 @@
+//@version=4
+study(title="Bollinger Bands", shorttitle="BB", overlay=true)
+
+basis = sma(close,20)
+dev = 2* stdev(close,20)
+upper = basis + dev
+lower = basis - dev
+
+plot(basis,color=color.blue,title="Basis")
+plot(upper,color=color.red,title="Upper Band")
+plot(lower,color=color.orange,title="Lower Band")
